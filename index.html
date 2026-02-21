@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de la Compra Kiwi Style</title>
+    <!-- Iconos externos (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Fuentes de Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Amatic+SC:wght@700&family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Lobster&family=Metal+Mania&family=Yellowtail&family=Permanent+Marker&family=Piedra&family=Sriracha&display=swap" rel="stylesheet">
+        
+        <header class="cabecera">
+            <!-- Icono personal -->
+            <img src="img/Juanjo.ico" class="ico" width="28">    
+            
+            <!-- Título principal -->
+            <h1><i class="fas fa-apple-alt"></i> Lista de la Compra</h1>
+            
+            <!-- Contenedor del Reloj -->
+            <div class="reloj">
+                 <p class="tiempo"></p>
+            </div>
+        </header>
+
+        <div class="input-group">
+            <input type="text" id="item-input" placeholder="Añadir producto..." autocomplete="off">
+            <button id="add-btn"><i class="fas fa-plus"></i></button>
+        </div>
+
+        <ul id="shopping-list">
+            <!-- Los productos se generarán aquí con JavaScript -->
+        </ul>
+
+        <div class="footer">
+            <!-- Botón para borrar solo los comprados -->
+            <button id="clear-completed-btn" class="clear-btn secondary">Borrar comprados</button>
+            <!-- Botón para borrar todo -->
+            <button id="clear-all-btn" class="clear-btn">Borrar todo</button>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

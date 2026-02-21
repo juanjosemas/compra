@@ -1,0 +1,209 @@
+/* Estilos generales del cuerpo */
+body {
+    background-color: #f0f4f0; /* Color de fondo base de la página */
+    font-family: 'Open Sans', sans-serif; /* Define la tipografía principal */
+    display: flex; /* Utiliza flexbox para organizar el contenido */
+    justify-content: center; /* Centra el contenido de forma horizontal */
+    margin: 0; /* Elimina los márgenes externos del navegador */
+    padding: 20px; /* Añade un espacio interno de seguridad */
+    background-size: cover; /* Ajusta la imagen de fondo para cubrir toda la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se duplique */
+    background-position: center; /* Centra la imagen de fondo en la pantalla */
+    background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('img/mujer.jpg'); /* Aplica un filtro blanco semitransparente sobre la imagen */
+}
+
+/* Contenedor principal de la App */
+.app-container {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco con transparencia (efecto cristal) */
+    width: 100%; /* El contenedor ocupa todo el ancho disponible */
+    max-width: 400px; /* Limita el ancho máximo para simular un móvil */
+    border-radius: 20px; /* Redondea las esquinas del contenedor */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Aplica una sombra suave para dar relieve */
+    overflow: hidden; /* Oculta cualquier contenido que sobresalga de los bordes redondeados */
+    display: flex; /* Activa flexbox para los elementos internos */
+    flex-direction: column; /* Alinea los elementos (header, lista, footer) en vertical */
+    height: 95vh; /* Establece la altura al 95% del alto de la pantalla */
+    position: relative; /* Permite posicionar elementos absolutos como el reloj dentro de él */
+}
+
+/* Cabecera */
+header {
+    background-color: red; /* Color de fondo rojo para la cabecera */
+    color: white; /* Color de texto blanco */
+    padding: 20px; /* Espacio interior para que el título respire */
+    display: flex; /* Activa flex para alinear icono y texto en línea */
+    align-items: center; /* Centra verticalmente el icono y el texto */
+    justify-content: center; /* Centra horizontalmente todo el bloque */
+    gap: 20px; /* Añade un espacio de separación entre el icono y el texto */
+}
+
+.ico {
+    border-radius: 50%; /* Hace que el icono personal sea circular */
+    margin: 0 10px 10px -10px; /* Ajusta los márgenes para posicionar el icono */
+    animation: logo 3s ease-in-out; /* Aplica la animación 'logo' definida abajo */
+    background-color: black; /* Color de fondo negro tras el icono */
+    border: 2px solid red; /* Borde rojo de 2px */
+    box-shadow: 0 0 0 3px black; /* Crea un anillo negro exterior al borde rojo */
+    vertical-align: middle; /* Alineación vertical media */
+}
+
+/* Animación de entrada para el icono */
+@keyframes logo {
+    from { opacity: 0; /* Empieza invisible */ transform: scale(0.5) rotate(0deg); /* Empieza pequeño y sin rotar */ }
+    to { opacity: 1; /* Termina visible */ transform: scale(1) rotate(1440deg); /* Termina en tamaño normal y girado */ }
+}
+
+header h1 {
+    margin: 0; /* Elimina márgenes por defecto del título */
+    font-size: 1.8rem; /* Tamaño de fuente grande para el título */
+    font-family: Piedra; /* Aplica la tipografía decorativa 'Piedra' */
+    font-style: italic; /* Aplica estilo cursiva al texto */
+}
+
+/* Estilo para el Reloj Digital */
+.reloj {
+    font-family: piedra; /* Tipografía del reloj igual que el título */
+    color: black; /* Color de texto negro */
+    text-align: center; /* Centra el texto */
+    position: absolute; /* Lo posiciona de forma independiente al flujo */
+    left: 40%; /* Lo desplaza horizontalmente */
+    top: -1.5%; /* Lo sitúa ligeramente fuera o al borde superior */
+    font-size: 16px; /* Tamaño de la fuente del reloj */
+    letter-spacing: 0.18em; /* Espaciado entre caracteres */
+    text-decoration: underline; /* Subraya el texto del tiempo */
+    text-decoration-color: red; /* Color del subrayado en rojo */
+    font-style: italic; /* Texto en cursiva */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Sección de entrada de texto */
+.input-group {
+    display: flex; /* Coloca el input y el botón en la misma fila */
+    padding: 15px; /* Espacio interno alrededor del grupo de entrada */
+    gap: 10px; /* Crea una separación de 10px entre input y botón */
+    border-bottom: 1px solid #eee; /* Dibuja una línea fina divisoria debajo */
+}
+
+input[type="text"] {
+    flex: 1; /* El cuadro de texto se expande para ocupar el espacio sobrante */
+    padding: 12px; /* Espacio interno para que el texto no pegue a los bordes */
+    border: 2px solid #e0e0e0; /* Define un borde gris claro de 2px */
+    border-radius: 10px; /* Redondea las esquinas del cuadro de texto */
+    outline: none; /* Elimina el resalte azul que pone el navegador por defecto */
+    font-size: 1.4rem; /* Tamaño de letra grande para la lectura */
+    font-style: italic; /* Texto en cursiva dentro del input */
+    font-family: Lobster; /* Aplica la tipografía 'Lobster' al escribir */
+    min-width: 0; /* Evita que el input empuje los elementos hacia afuera */
+}
+
+input[type="text"]:focus {
+    border-color: red; /* Cambia el color del borde a rojo cuando vas a escribir */
+}
+
+#add-btn {
+    background-color: red; /* Color de fondo rojo para el botón de añadir */
+    color: white; /* Color del icono del botón en blanco */
+    border: none; /* Elimina el borde por defecto del botón */
+    width: 50px; /* Ancho fijo para que no se deforme */
+    height: 50px; /* Alto fijo para que sea cuadrado */
+    border-radius: 10px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Cambia el puntero del ratón a una mano al pasar por encima */
+    flex-shrink: 0; /* Evita que el botón se encoja si el texto es muy largo */
+    display: flex; /* Activa flex para centrar el icono interno */
+    align-items: center; /* Centra el icono verticalmente */
+    justify-content: center; /* Centra el icono horizontalmente */
+}
+
+/* Lista de productos */
+#shopping-list {
+    list-style: none; /* Elimina los puntos o números de la lista */
+    padding: 0; /* Quita el espacio interno por defecto de las listas */
+    margin: 0; /* Quita el margen externo por defecto */
+    overflow-y: auto; /* Activa la barra de scroll vertical si hay muchos productos */
+    flex: 1; /* Hace que la lista ocupe todo el espacio central disponible */
+}
+
+/* Cada fila de producto */
+.item {
+    display: flex; /* Alinea checkbox, nombre y papelera en fila */
+    align-items: center; /* Centra todos los elementos de la fila verticalmente */
+    padding: 8px 20px; /* Espacio interno para que la tarjeta sea más compacta */
+    border-bottom: 1px solid #f9f9f9; /* Línea divisoria muy sutil entre productos */
+    font-style: italic; /* Estilo cursiva para toda la fila */
+}
+
+.item span {
+    flex: 1; /* El nombre del producto ocupa todo el espacio del centro */
+    margin-left: 15px; /* Separa el texto del checkbox de la izquierda */
+    font-size: 1.4rem; /* Tamaño de letra grande para los productos */
+    color: black; /* Color de texto negro */
+    font-family: Lobster; /* Aplica la tipografía caligráfica 'Lobster' */
+}
+
+/* Estilo para cuando el producto está tachado */
+.item.completed span {
+    text-decoration: line-through black; /* Dibuja una línea de tachado de color negro */
+    color: red; /* Cambia el color del texto a rojo cuando está completado */
+}
+
+/* Checkbox circular */
+.checkbox {
+    width: 18px; /* Establece el ancho del selector */
+    height: 18px; /* Establece el alto del selector */
+    cursor: pointer; /* Cambia el cursor a mano al marcarlo */
+}
+
+/* Botón de borrar (Papelera) */
+.delete-btn {
+    background: none; /* Elimina cualquier color de fondo */
+    border: none; /* Elimina el borde del botón */
+    color: black; /* Establece el icono de la papelera en negro */
+    cursor: pointer; /* Cambia el cursor a mano */
+    font-size: 1.1rem; /* Tamaño del icono de la papelera */
+    transition: color 0.3s; /* Suaviza el cambio de color al pasar el ratón */
+}
+
+.delete-btn:hover {
+    color: #f44336; /* Cambia a un rojo intenso al pasar el ratón por encima */
+}
+
+/* Pie de página */
+.footer {
+    padding: 10px; /* Espacio interno de la zona de botones inferior */
+    text-align: center; /* Centra los botones en el contenedor */
+    display: flex; /* Activa flexbox para colocar botones en línea */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px; /* Espacio de separación entre los botones */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco con transparencia (efecto cristal) */
+}
+
+.clear-btn {
+    background: none; /* Sin color de fondo inicial */
+    border: 2px solid black; /* Borde negro de 2px de grosor */
+    color: black; /* Texto del botón en color negro */
+    padding: 8px 15px; /* Espacio interior del botón */
+    border-radius: 20px; /* Forma de cápsula redondeada */
+    cursor: pointer; /* Cambia el cursor a mano */
+    font-size: 1.1rem; /* Tamaño de letra de los botones */
+    transition: all 0.3s; /* Suaviza todos los cambios en el hover */
+    font-family: Sriracha; /* Aplica la tipografía 'Sriracha' */
+    font-style: italic; /* Pone el texto en cursiva */
+    font-weight: 900; /* Aplica el grosor máximo a la letra */
+}
+
+.clear-btn:hover {
+    background-color: #ff5252; /* El fondo se vuelve rojo al pasar el ratón */
+    color: white; /* El texto se vuelve blanco al pasar el ratón */
+}
+
+/* Botón de borrar comprados (estilo secundario) */
+.clear-btn.secondary {
+    border-color: black; /* Mantiene el borde negro */
+    color: black; /* Mantiene el texto negro */
+}
+
+.clear-btn.secondary:hover {
+    background-color: #ffa000; /* El fondo se vuelve naranja al pasar el ratón */
+    color: white; /* El texto se vuelve blanco al pasar el ratón */
+}
