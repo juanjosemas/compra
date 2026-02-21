@@ -5,7 +5,7 @@ const shoppingList = document.getElementById('shopping-list');
 const clearAllBtn = document.getElementById('clear-all-btn');
 const clearCompletedBtn = document.getElementById('clear-completed-btn');
 
-// Elementos para el reloj digital
+// Elemento para el reloj digital
 const $tiempo = document.querySelector('.tiempo');
 
 // Al cargar la página, recuperamos la lista guardada en el navegador
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', loadItems);
 // Escuchar el clic en el botón de añadir
 addBtn.addEventListener('click', addItem);
 
-// Escuchar si el usuario pulsa la tecla "Enter"
+// Escuchar si el usuario pulsa la tecla "Enter" en el input principal
 input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addItem();
 });
@@ -59,6 +59,10 @@ function createItemDOM(item) {
     const checkbox = li.querySelector('.checkbox');
     checkbox.addEventListener('change', () => toggleStatus(item.id, li));
 
+    // Evento para editar con DOBLE CLIC
+    const span = li.querySelector('span');
+    span.addEventListener('dblclick', () => enableEditing(item.id, span));
+
     // Evento para borrar este producto con confirmación
     const deleteBtn = li.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', () => {
@@ -68,6 +72,56 @@ function createItemDOM(item) {
     });
 
     shoppingList.appendChild(li); // Añadimos el producto a la lista visible
+}
+
+// Función para activar el modo edición
+function enableEditing(id, spanElement) {
+    const originalText = spanElement.innerText;
+    const parent = spanElement.parentNode;
+
+    // Creamos un input temporal
+    const editInput = document.createElement('input');
+    editInput.type = 'text';
+    editInput.value = originalText;
+    editInput.classList.add('edit-input');
+
+    // Reemplazamos el span por el input
+    parent.replaceChild(editInput, spanElement);
+    editInput.focus();
+
+    // AL PULSAR ENTER: Solo forzamos que pierda el foco (blur)
+    // Esto disparará automáticamente el evento 'blur' de abajo una sola vez
+    editInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') editInput.blur();
+    });
+
+    // AL PERDER EL FOCO: Aquí es donde realmente guardamos los datos
+    editInput.addEventListener('blur', () => {
+        finishEditing(id, editInput, spanElement);
+    });
+}
+
+// Función para guardar el cambio y volver al estado normal
+function finishEditing(id, inputElement, spanElement) {
+    // Seguridad: si por algún motivo ya no tiene padre, no hacemos nada
+    if (!inputElement.parentNode) return;
+
+    const newText = inputElement.value.trim();
+    const parent = inputElement.parentNode;
+
+    // Si el texto es válido y ha cambiado, actualizamos LocalStorage
+    if (newText !== "") {
+        let items = getFromStorage();
+        items = items.map(item => {
+            if (item.id === id) item.text = newText;
+            return item;
+        });
+        localStorage.setItem('myList', JSON.stringify(items));
+        spanElement.innerText = newText;
+    }
+
+    // Volvemos a poner el span original (o actualizado) en el lugar del input
+    parent.replaceChild(spanElement, inputElement);
 }
 
 // Cambia el estado (completado/pendiente)
@@ -129,13 +183,10 @@ function loadItems() {
 
 function Relojdigital(){
     let f = new Date();
-    // Obtenemos la hora en formato local
     let timeString = f.toLocaleTimeString();
-    // Lo pintamos en el HTML
     if ($tiempo) $tiempo.innerHTML = timeString;
 }
 
-// Ejecutamos la función cada 100 milisegundos para que sea exacto
 setInterval(() => {
     Relojdigital();
 }, 100);

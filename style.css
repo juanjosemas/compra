@@ -24,7 +24,7 @@ body {
     display: flex; /* Activa flexbox para los elementos internos */
     flex-direction: column; /* Alinea los elementos (header, lista, footer) en vertical */
     height: 95vh; /* Establece la altura al 95% del alto de la pantalla */
-    position: relative; /* Permite posicionar elementos absolutos como el reloj dentro de él */
+    position: relative; /* Permite posicionar elementos absolutos dentro de él */
 }
 
 /* Cabecera */
@@ -50,8 +50,8 @@ header {
 
 /* Animación de entrada para el icono */
 @keyframes logo {
-    from { opacity: 0; /* Empieza invisible */ transform: scale(0.5) rotate(0deg); /* Empieza pequeño y sin rotar */ }
-    to { opacity: 1; /* Termina visible */ transform: scale(1) rotate(1440deg); /* Termina en tamaño normal y girado */ }
+    from { opacity: 0; /* Empieza invisible */ transform: scale(0.5) rotate(0deg); /* Pequeño y sin rotación */ }
+    to { opacity: 1; /* Termina visible */ transform: scale(1) rotate(1440deg); /* Tamaño normal y varias vueltas */ }
 }
 
 header h1 {
@@ -66,12 +66,12 @@ header h1 {
     font-family: piedra; /* Tipografía del reloj igual que el título */
     color: black; /* Color de texto negro */
     text-align: center; /* Centra el texto */
-    position: absolute; /* Lo posiciona de forma independiente al flujo */
-    left: 40%; /* Lo desplaza horizontalmente */
-    top: -1.5%; /* Lo sitúa ligeramente fuera o al borde superior */
+    position: absolute; /* Lo posiciona de forma independiente */
+    left: 40%; /* Lo desplaza desde la izquierda */
+    top: -1.5%; /* Lo sitúa cerca del borde superior */
     font-size: 16px; /* Tamaño de la fuente del reloj */
-    letter-spacing: 0.18em; /* Espaciado entre caracteres */
-    text-decoration: underline; /* Subraya el texto del tiempo */
+    letter-spacing: 0.18em; /* Espaciado entre letras */
+    text-decoration: underline; /* Subraya el texto */
     text-decoration-color: red; /* Color del subrayado en rojo */
     font-style: italic; /* Texto en cursiva */
     font-weight: bold; /* Texto en negrita */
@@ -80,7 +80,7 @@ header h1 {
 /* Sección de entrada de texto */
 .input-group {
     display: flex; /* Coloca el input y el botón en la misma fila */
-    padding: 15px; /* Espacio interno alrededor del grupo de entrada */
+    padding: 15px; /* Espacio interior alrededor del grupo de entrada */
     gap: 10px; /* Crea una separación de 10px entre input y botón */
     border-bottom: 1px solid #eee; /* Dibuja una línea fina divisoria debajo */
 }
@@ -109,7 +109,7 @@ input[type="text"]:focus {
     height: 50px; /* Alto fijo para que sea cuadrado */
     border-radius: 10px; /* Redondea las esquinas del botón */
     cursor: pointer; /* Cambia el puntero del ratón a una mano al pasar por encima */
-    flex-shrink: 0; /* Evita que el botón se encoja si el texto es muy largo */
+    flex-shrink: 0; /* Evita que el botón se encoja */
     display: flex; /* Activa flex para centrar el icono interno */
     align-items: center; /* Centra el icono verticalmente */
     justify-content: center; /* Centra el icono horizontalmente */
@@ -130,7 +130,7 @@ input[type="text"]:focus {
     align-items: center; /* Centra todos los elementos de la fila verticalmente */
     padding: 8px 20px; /* Espacio interno para que la tarjeta sea más compacta */
     border-bottom: 1px solid #f9f9f9; /* Línea divisoria muy sutil entre productos */
-    font-style: italic; /* Estilo cursiva para toda la fila */
+    font-style: italic; /* Estilo cursiva para la fila completa */
 }
 
 .item span {
@@ -139,6 +139,19 @@ input[type="text"]:focus {
     font-size: 1.4rem; /* Tamaño de letra grande para los productos */
     color: black; /* Color de texto negro */
     font-family: Lobster; /* Aplica la tipografía caligráfica 'Lobster' */
+}
+
+/* Estilo para el input de edición al hacer doble clic */
+.edit-input {
+    flex: 1; /* Ocupa el espacio central de la fila */
+    margin-left: 15px; /* Alineación con el resto del texto */
+    font-family: Lobster; /* Mantiene la fuente del diseño */
+    font-size: 1.4rem; /* Mantiene el tamaño del texto */
+    border: 1px solid red; /* Borde rojo para saber que editamos */
+    border-radius: 5px; /* Bordes redondeados suaves */
+    padding: 2px 5px; /* Pequeño espacio interno */
+    outline: none; /* Sin borde de enfoque azul */
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
 }
 
 /* Estilo para cuando el producto está tachado */
@@ -186,7 +199,7 @@ input[type="text"]:focus {
     border-radius: 20px; /* Forma de cápsula redondeada */
     cursor: pointer; /* Cambia el cursor a mano */
     font-size: 1.1rem; /* Tamaño de letra de los botones */
-    transition: all 0.3s; /* Suaviza todos los cambios en el hover */
+    transition: all 0.3s; /* Suaviza todos los cambios (fondo y color) en el hover */
     font-family: Sriracha; /* Aplica la tipografía 'Sriracha' */
     font-style: italic; /* Pone el texto en cursiva */
     font-weight: 900; /* Aplica el grosor máximo a la letra */
