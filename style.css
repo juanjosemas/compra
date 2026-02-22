@@ -23,7 +23,7 @@ body {
     overflow: hidden; /* Oculta cualquier contenido que sobresalga de los bordes redondeados */
     display: flex; /* Activa flexbox para los elementos internos */
     flex-direction: column; /* Alinea los elementos (header, lista, footer) en vertical */
-    height: 94vh; /* Establece la altura al 95% del alto de la pantalla */
+    height: 94vh; /* Establece la altura al 94% del alto de la pantalla */
     position: relative; /* Permite posicionar elementos absolutos dentro de él */
 }
 
@@ -95,6 +95,7 @@ input[type="text"] {
     font-style: italic; /* Texto en cursiva dentro del input */
     font-family: Lobster; /* Aplica la tipografía 'Lobster' al escribir */
     min-width: 0; /* Evita que el input empuje los elementos hacia afuera */
+    height: 13px;
 }
 
 input[type="text"]:focus {
@@ -106,7 +107,7 @@ input[type="text"]:focus {
     color: white; /* Color del icono del botón en blanco */
     border: none; /* Elimina el borde por defecto del botón */
     width: 50px; /* Ancho fijo para que no se deforme */
-    height: 50px; /* Alto fijo para que sea cuadrado */
+    height: 40px; /* Alto fijo para que sea cuadrado */
     border-radius: 10px; /* Redondea las esquinas del botón */
     cursor: pointer; /* Cambia el puntero del ratón a una mano al pasar por encima */
     flex-shrink: 0; /* Evita que el botón se encoja */
