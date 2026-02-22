@@ -10,7 +10,7 @@ body {
     background-repeat: no-repeat; /* Evita que la imagen de fondo se duplique */
     background-position: center; /* Centra la imagen de fondo en la pantalla */
     background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('img/mujer.jpg'); /* Aplica un filtro blanco semitransparente sobre la imagen */
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3)), url('img/mujer.jpg'); /* Filtro degradado blanco sobre la imagen de fondo */
 }
 
 /* Contenedor principal de la App */
@@ -50,7 +50,7 @@ header {
 
 /* Animación de entrada para el icono */
 @keyframes logo {
-    from { opacity: 0; /* Empieza invisible */ transform: scale(0.5) rotate(0deg); /* Pequeño y sin rotación */ }
+    from { opacity: 0; /* Empieza invisible */ transform: scale(0.5) rotate(0deg); /* Pequeño y sin rotar */ }
     to { opacity: 1; /* Termina visible */ transform: scale(1) rotate(1440deg); /* Tamaño normal y varias vueltas */ }
 }
 
@@ -87,7 +87,7 @@ header h1 {
 
 input[type="text"] {
     flex: 1; /* El cuadro de texto se expande para ocupar el espacio sobrante */
-    padding: 12px; /* Espacio interno para que el texto no pegue a los bordes */
+    padding: 12px; /* Espacio interior para que el texto no pegue a los bordes */
     border: 2px solid #e0e0e0; /* Define un borde gris claro de 2px */
     border-radius: 10px; /* Redondea las esquinas del cuadro de texto */
     outline: none; /* Elimina el resalte azul que pone el navegador por defecto */
