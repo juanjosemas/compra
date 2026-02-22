@@ -23,7 +23,7 @@ body {
     overflow: hidden; /* Oculta cualquier contenido que sobresalga de los bordes redondeados */
     display: flex; /* Activa flexbox para los elementos internos */
     flex-direction: column; /* Alinea los elementos (header, lista, footer) en vertical */
-    height: 95vh; /* Establece la altura al 95% del alto de la pantalla */
+    height: 94vh; /* Establece la altura al 95% del alto de la pantalla */
     position: relative; /* Permite posicionar elementos absolutos dentro de él */
 }
 
