@@ -50,7 +50,7 @@ header {
 
 /* Animación de entrada para el icono */
 @keyframes logo {
-    from { opacity: 0; /* Empieza invisible */ transform: scale(0.5) rotate(0deg); /* Pequeño y sin rotar */ }
+    from { opacity: 0; /* Empieza invisible */ transform: scale(0.5) rotate(0deg); /* Pequeño y sin rotación */ }
     to { opacity: 1; /* Termina visible */ transform: scale(1) rotate(1440deg); /* Tamaño normal y varias vueltas */ }
 }
 
@@ -95,7 +95,7 @@ input[type="text"] {
     font-style: italic; /* Texto en cursiva dentro del input */
     font-family: Lobster; /* Aplica la tipografía 'Lobster' al escribir */
     min-width: 0; /* Evita que el input empuje los elementos hacia afuera */
-    height: 13px;
+    height: 13px; /* Altura manual fija para el input */
 }
 
 input[type="text"]:focus {
@@ -107,7 +107,7 @@ input[type="text"]:focus {
     color: white; /* Color del icono del botón en blanco */
     border: none; /* Elimina el borde por defecto del botón */
     width: 50px; /* Ancho fijo para que no se deforme */
-    height: 40px; /* Alto fijo para que sea cuadrado */
+    height: 40px; /* Altura manual fija para el botón */
     border-radius: 10px; /* Redondea las esquinas del botón */
     cursor: pointer; /* Cambia el puntero del ratón a una mano al pasar por encima */
     flex-shrink: 0; /* Evita que el botón se encoja */
@@ -129,7 +129,7 @@ input[type="text"]:focus {
 .item {
     display: flex; /* Alinea checkbox, nombre y papelera en fila */
     align-items: center; /* Centra todos los elementos de la fila verticalmente */
-    padding: 8px 20px; /* Espacio interno para que la tarjeta sea más compacta */
+    padding: 8px 20px; /* Espacio interior para que la tarjeta sea más compacta */
     border-bottom: 1px solid #f9f9f9; /* Línea divisoria muy sutil entre productos */
     font-style: italic; /* Estilo cursiva para la fila completa */
 }

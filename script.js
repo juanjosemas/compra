@@ -38,12 +38,12 @@ function addItem() {
         completed: false
     };
 
-    createItemDOM(item); // Lo pintamos en la pantalla
+    createItemDOM(item, true); // Lo pintamos al principio de la lista
     saveItem(item); // Lo guardamos en la memoria del navegador
     input.value = ""; // Limpiamos el cuadro de escribir
 }
 
-function createItemDOM(item) {
+function createItemDOM(item, isNew = false) {
     const li = document.createElement('li'); // Creamos una etiqueta <li>
     li.classList.add('item'); // Le ponemos la clase CSS 'item'
     if (item.completed) li.classList.add('completed'); // Si ya estaba comprado, lo tachamos
@@ -71,7 +71,12 @@ function createItemDOM(item) {
         }
     });
 
-    shoppingList.appendChild(li); // Añadimos el producto a la lista visible
+    // Si es nuevo o desmarcado, va arriba. Si ya estaba completado al cargar, va abajo.
+    if (isNew || !item.completed) {
+        shoppingList.prepend(li); // Añade al principio
+    } else {
+        shoppingList.appendChild(li); // Añade al final
+    }
 }
 
 // Función para activar el modo edición
@@ -79,37 +84,29 @@ function enableEditing(id, spanElement) {
     const originalText = spanElement.innerText;
     const parent = spanElement.parentNode;
 
-    // Creamos un input temporal
     const editInput = document.createElement('input');
     editInput.type = 'text';
     editInput.value = originalText;
     editInput.classList.add('edit-input');
 
-    // Reemplazamos el span por el input
     parent.replaceChild(editInput, spanElement);
     editInput.focus();
 
-    // AL PULSAR ENTER: Solo forzamos que pierda el foco (blur)
-    // Esto disparará automáticamente el evento 'blur' de abajo una sola vez
     editInput.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') editInput.blur();
     });
 
-    // AL PERDER EL FOCO: Aquí es donde realmente guardamos los datos
     editInput.addEventListener('blur', () => {
         finishEditing(id, editInput, spanElement);
     });
 }
 
-// Función para guardar el cambio y volver al estado normal
 function finishEditing(id, inputElement, spanElement) {
-    // Seguridad: si por algún motivo ya no tiene padre, no hacemos nada
     if (!inputElement.parentNode) return;
 
     const newText = inputElement.value.trim();
     const parent = inputElement.parentNode;
 
-    // Si el texto es válido y ha cambiado, actualizamos LocalStorage
     if (newText !== "") {
         let items = getFromStorage();
         items = items.map(item => {
@@ -120,30 +117,40 @@ function finishEditing(id, inputElement, spanElement) {
         spanElement.innerText = newText;
     }
 
-    // Volvemos a poner el span original (o actualizado) en el lugar del input
     parent.replaceChild(spanElement, inputElement);
 }
 
-// Cambia el estado (completado/pendiente)
-function toggleStatus(id, element) {
+// Cambia el estado (completado/pendiente) y mueve el elemento
+function toggleStatus(id, liElement) {
     let items = getFromStorage();
+    let isCompleted = false;
+
     items = items.map(i => {
-        if (i.id === id) i.completed = !i.completed;
+        if (i.id === id) {
+            i.completed = !i.completed;
+            isCompleted = i.completed;
+        }
         return i;
     });
+
     localStorage.setItem('myList', JSON.stringify(items));
-    element.classList.toggle('completed'); // Cambia el diseño visualmente
+    liElement.classList.toggle('completed');
+
+    // Lógica para mover el elemento visualmente
+    if (isCompleted) {
+        shoppingList.appendChild(liElement); // Si se marca, va al final
+    } else {
+        shoppingList.prepend(liElement); // Si se desmarca, va al principio
+    }
 }
 
-// Borra un solo producto
 function deleteItem(id, element) {
     let items = getFromStorage();
     items = items.filter(i => i.id !== id);
     localStorage.setItem('myList', JSON.stringify(items));
-    element.remove(); // Lo quita de la pantalla
+    element.remove();
 }
 
-// Borra solo los productos marcados como completados
 function clearCompleted() {
     let items = getFromStorage();
     items = items.filter(i => !i.completed);
@@ -153,7 +160,6 @@ function clearCompleted() {
     completedElements.forEach(el => el.remove());
 }
 
-// Borra toda la lista
 function clearAll() {
     if (confirm("¿Quieres borrar toda la lista?")) {
         localStorage.removeItem('myList');
@@ -161,7 +167,7 @@ function clearAll() {
     }
 }
 
-// --- FUNCIONES DE ALMACENAMIENTO (LocalStorage) ---
+// --- FUNCIONES DE ALMACENAMIENTO ---
 
 function saveItem(item) {
     const items = getFromStorage();
@@ -176,6 +182,9 @@ function getFromStorage() {
 
 function loadItems() {
     const items = getFromStorage();
+    // Ordenamos: primero los falsos (pendientes), luego los verdaderos (completados)
+    items.sort((a, b) => a.completed - b.completed);
+    // Los pintamos (createItemDOM se encarga de la posición según el estado)
     items.forEach(item => createItemDOM(item));
 }
 
