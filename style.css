@@ -63,7 +63,7 @@ header h1 {
 
 /* Estilo para el Reloj Digital */
 .reloj {
-    font-family: piedra; /* Tipografía del reloj igual que el título */
+    font-family: lobster; /* Tipografía del reloj igual que el título */
     color: black; /* Color de texto negro */
     text-align: center; /* Centra el texto */
     position: absolute; /* Lo posiciona de forma independiente */
