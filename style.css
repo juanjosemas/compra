@@ -30,7 +30,7 @@ body {
 /* Cabecera */
 header {
     background-color: red; /* Color de fondo rojo para la cabecera */
-    color: white; /* Color de texto blanco */
+    color: black; /* Color de texto blanco */
     padding: 20px; /* Espacio interior para que el título respire */
     display: flex; /* Activa flex para alinear icono y texto en línea */
     align-items: center; /* Centra verticalmente el icono y el texto */
@@ -57,7 +57,7 @@ header {
 header h1 {
     margin: 0; /* Elimina márgenes por defecto del título */
     font-size: 1.8rem; /* Tamaño de fuente grande para el título */
-    font-family: Piedra; /* Aplica la tipografía decorativa 'Piedra' */
+    font-family: Lobster; /* Aplica la tipografía decorativa 'Piedra' */
     font-style: italic; /* Aplica estilo cursiva al texto */
 }
 
