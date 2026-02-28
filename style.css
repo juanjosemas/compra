@@ -59,6 +59,7 @@ header h1 {
     font-size: 1.8rem; /* Tamaño de fuente grande para el título */
     font-family: Lobster; /* Aplica la tipografía decorativa 'Piedra' */
     font-style: italic; /* Aplica estilo cursiva al texto */
+    word-spacing: 2px;
 }
 
 /* Estilo para el Reloj Digital */
@@ -158,7 +159,7 @@ input[type="text"]:focus {
 /* Estilo para cuando el producto está tachado */
 .item.completed span {
     text-decoration: line-through black; /* Dibuja una línea de tachado de color negro */
-    color: red; /* Cambia el color del texto a rojo cuando está completado */
+    color: blue; /* Cambia el color del texto a rojo cuando está completado */
 }
 
 /* Checkbox circular */
